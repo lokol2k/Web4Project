@@ -2,19 +2,25 @@ package com.projetobase.model.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.projetobase.model.entity.Quiz;
+import com.projetobase.model.repository.QuizRepository;
 
 public class QuizService {
+	
+	
+	@Autowired
+	private QuizRepository quizRepository;
 	/**
 	 * Serviço para inserir um Quiz
 	 *
 	 * @param quiz
 	 * @return
 	 */
-	public Quiz cadastrarQuiz( Quiz quiz )
+	public Quiz cadastrarQuiz(Quiz quiz)
 	{ 
-		quiz.setIsActive(true);
-		return quiz;
+		return this.quizRepository.save(quiz);
 	}
 
 	public List<Quiz> listarQuiz() {

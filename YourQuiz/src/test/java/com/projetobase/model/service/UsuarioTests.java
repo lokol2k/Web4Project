@@ -61,6 +61,7 @@ public class UsuarioTests extends AbstractIntegrationTests
 		this.usuarioService.cadastrarUsuario(usuario);
 		Assert.assertNotNull( usuario );
 		Assert.assertNotNull( usuario.getId() );
+		
 
 	}
 	

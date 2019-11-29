@@ -1,6 +1,6 @@
 package com.projetobase.model.entity;
 
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +17,7 @@ import lombok.EqualsAndHashCode;
 @Entity
 public class Quiz extends AbstractEntity{ 
 
+
 	
 	@NotBlank
 	@Column(nullable = false, length = 200)
@@ -29,13 +30,11 @@ public class Quiz extends AbstractEntity{
 	private String description;
 	
 	@NotBlank
-	private OffsetDateTime startDate;
+	private LocalDateTime startDate;
 	
-	/*TO DO  set OffsetDateTime to ...*/
 	@NotBlank
-	private OffsetDateTime endDate;
+	private LocalDateTime endDate;
 	
-	/*TO DO  set OffsetDateTime to ...*/
 	@NotBlank
 	@Column(nullable = false)
 	private Boolean isActive;
@@ -50,6 +49,7 @@ public class Quiz extends AbstractEntity{
 		// TODO Auto-generated method stub
 		
 	}
+	
 	
 	
 	/*TO DO  set object QuesntionSetup*/

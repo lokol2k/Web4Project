@@ -1,13 +1,13 @@
 package com.projetobase.model.service;
 
+import java.time.LocalDateTime;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.context.jdbc.Sql;
 
 import com.projetobase.model.entity.Quiz;
-import com.projetobase.model.entity.RoleEnum;
 import com.projetobase.model.entity.Usuario;
 import com.projetobase.model.repository.UsuarioRepository;
 
@@ -17,7 +17,7 @@ public class QuizTestes {
 	private QuizService quizService;
 	
 	@Autowired
-	private UsuarioService usuarioService;
+	private UsuarioService quizRepository;
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
@@ -25,15 +25,18 @@ public class QuizTestes {
 	
 	@Test
 	@Sql({
-		"/dataset/truncate.sql",
 				"/dataset/quiz.sql"})
 		public void cadastrarQuizMustPass() {
 			Quiz quiz = new Quiz();
 			quiz.setQuizHeader("Pronomes");
 			quiz.setDescription("Quiz de pronomes e etc");
-			quiz.setStartDate("2019-11-21");
-			quiz.setEndDate("2019-11-23");
-			Usuario usuario = this.usuarioRepository.findById(1001L).orElse(null);
+			quiz.setStartDate(LocalDateTime.of(2019, 11, 21, 10, 11));
+			quiz.setEndDate(LocalDateTime.of(2019, 11, 23, 10, 11));
+			Usuario usuario = this.usuarioRepository.findById((long) 1001).orElse(null);
 			quiz.setUser(usuario);
+			
+			quizService.cadastrarQuiz(quiz);
+				Assert.assertNotNull(quiz.getId());
 		}
+
 }
