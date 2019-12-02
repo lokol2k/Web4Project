@@ -1,0 +1,3 @@
+TRUNCATE usuario CASCADE;
+TRUNCATE quiz CASCADE;
+TRUNCATE questionSetup CASCADE;

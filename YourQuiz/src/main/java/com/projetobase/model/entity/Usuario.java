@@ -11,7 +11,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -27,6 +26,8 @@ import lombok.EqualsAndHashCode;
 @Entity
 public class Usuario extends AbstractEntity implements UserDetails {
 
+
+	
 
 	/**
 	 * 

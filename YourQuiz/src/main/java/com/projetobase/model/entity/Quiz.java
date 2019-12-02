@@ -1,13 +1,17 @@
 package com.projetobase.model.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,9 +19,8 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Entity
-public class Quiz extends AbstractEntity{ 
-
-
+public class Quiz extends AbstractEntity implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
 	@NotBlank
 	@Column(nullable = false, length = 200)
@@ -40,15 +43,16 @@ public class Quiz extends AbstractEntity{
 	private Boolean isActive;
 	
 
-	@NotBlank
-	@Column(nullable = false)
-	private User user;
-
-
-	public void setUser(Usuario usuario) {
-		// TODO Auto-generated method stub
-		
-	}
+	@JsonIgnoreProperties("quiz")
+	@ManyToOne(targetEntity = Usuario.class,
+			fetch = FetchType.LAZY)
+	private Usuario usuario;
+	
+	@JsonIgnoreProperties("quiz")
+	@OneToMany(targetEntity = Category.class,
+			fetch = FetchType.LAZY)
+	private Category category;
+	
 	
 	
 	

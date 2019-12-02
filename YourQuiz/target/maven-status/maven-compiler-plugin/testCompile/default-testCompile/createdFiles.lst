@@ -1,0 +1,5 @@
+com\projetobase\model\service\AbstractIntegrationTests.class
+com\projetobase\model\service\QuizTestes.class
+com\projetobase\model\service\UsuarioTests.class
+com\projetobase\TestApplication.class
+com\projetobase\ProjetoBaseApplicationTests.class
