@@ -1,3 +1,2 @@
 INSERT INTO public.category(
-            id, name)
-    VALUES (1, 'Portugues')
+            id, created,name) VALUES (1,NOW(),'Portugues');

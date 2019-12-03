@@ -22,11 +22,10 @@ public class CategoryTestes extends AbstractIntegrationTests {
 	 * ====================================== CADASTRAR ===========================================
 	 */
 	@Test
-	@Sql({ "/dataset/category.sql"})
 	public void cadastrarCategoryMustPass() {
 		
 		Category category = new Category();
-		category.setName("Portugues");
+		category.setName("Ingles");
 		
 		CategoryService.cadastrarCategory(category);
 		

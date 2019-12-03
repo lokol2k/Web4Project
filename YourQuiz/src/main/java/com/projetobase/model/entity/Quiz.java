@@ -49,7 +49,7 @@ public class Quiz extends AbstractEntity implements Serializable {
 	private Usuario usuario;
 	
 	@JsonIgnoreProperties("quiz")
-	@OneToMany(targetEntity = Category.class,
+	@ManyToOne(targetEntity = Category.class,
 			fetch = FetchType.LAZY)
 	private Category category;
 	

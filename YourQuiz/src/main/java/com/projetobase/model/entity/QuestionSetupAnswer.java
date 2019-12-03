@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -26,7 +26,7 @@ public class QuestionSetupAnswer extends AbstractEntity implements Serializable 
 	private String Description;
 
 	@JsonIgnoreProperties("QuestionSetup")
-	@OneToMany(targetEntity = Quiz.class,
+	@ManyToOne(targetEntity = Quiz.class,
 			fetch = FetchType.LAZY)
 	private Quiz quiz;
 }

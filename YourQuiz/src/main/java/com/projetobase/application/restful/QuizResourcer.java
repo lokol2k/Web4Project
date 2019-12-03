@@ -16,16 +16,6 @@ import com.projetobase.model.service.QuizService;
 @RestController
 @RequestMapping("/api/quiz")
 public class QuizResourcer {
-	@Autowired
-	private QuizService quizService;
-	
-	@GetMapping("/list")
-	public List<Quiz> listar(){
-			return this.quizService.listarQuiz();
-	}
-	@GetMapping("/list")
-	public Quiz detalhar(@RequestParam("id") Long id){
-			return this.quizService.detlharQuiz(id);
-	}
+
 
 }
