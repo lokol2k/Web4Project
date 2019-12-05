@@ -1,5 +1,7 @@
 package com.projetobase.model.service;
 
+import javax.validation.ValidationException;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +63,6 @@ public class UsuarioTests extends AbstractIntegrationTests
 		this.usuarioService.cadastrarUsuario(usuario);
 		Assert.assertNotNull( usuario );
 		Assert.assertNotNull( usuario.getId() );
-		
 
 	}
 	
@@ -86,6 +87,14 @@ public class UsuarioTests extends AbstractIntegrationTests
 		Assert.assertEquals( true, usuarioAtivo.getAtivo() );
 	}
 	
+	@Test(expected = ValidationException.class)
+	@Sql({ "/dataset/truncate.sql" })
+	public void ativarUsuarioMustFailTokenNull() {
+		this.usuarioService.ativarUsuario("123456", "123456", null);
+
+		Usuario usuarioAtivo = this.usuarioRepository.findByEmailIgnoreCase( "marcieli.langer@mailinator.com" );
+		Assert.assertEquals( true, usuarioAtivo.getAtivo() );
+	}
 	//Falta fazer testes com token inválido, token null, token vencido, senha null, senhas diferentes
 	
 	
@@ -94,10 +103,9 @@ public class UsuarioTests extends AbstractIntegrationTests
 	
 
 	@Test
-	@Sql( {		    
+	@Sql({		    
       "/dataset/truncate.sql",
-			"/dataset/usuarios.sql"
-	})
+			"/dataset/usuarios.sql"})
 	public void enviarEmailRecuperarSenhaUsuarioMustPass(){
 		this.usuarioService.enviarEmailRecuperarSenhaUsuario("marcieli.langer@mailinator.com");
 		Usuario usuario = this.usuarioRepository.findByEmailIgnoreCase( "marcieli.langer@mailinator.com" );

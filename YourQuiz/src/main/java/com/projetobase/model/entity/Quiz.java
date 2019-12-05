@@ -64,7 +64,6 @@ public class Quiz extends AbstractEntity implements Serializable {
 	private List<QuestionSetup> questionSetup = new ArrayList<QuestionSetup>();
 	
 	
-	/*TO DO  set object QuesntionSetup*/
 }
 
 

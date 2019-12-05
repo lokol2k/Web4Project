@@ -3,6 +3,8 @@ package com.projetobase.model.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -61,8 +63,34 @@ public class QuizService {
 		
 		return quiz;
 	}
+	/**
+	 * Serviço para remover um Quiz
+	 *
+	 * @param quiz
+	 * @return
+	 */
 	public void removerQuiz(long id) {
 		this.quizRepository.deleteById(id);
 	}
-	
+	/**
+	 * Serviço para listar um Quiz por sua category
+	 *
+	 * @param quiz
+	 * @return
+	 */
+	public Page<Quiz> listarQuizByCategory(long id, PageRequest pageable){
+		return this.quizRepository.findByCategory(id, pageable);
+	}
+	/**
+	 * Serviço para listar um Quiz por seu nome
+	 * 
+	 *
+	 * @param quiz
+	 * @return
+	 */
+	public Page<Quiz> listarQuizByHeaderQuiz(String headerQuiz, PageRequest pageable){
+		return this.quizRepository.findByQuizHeader(headerQuiz, pageable);
+	}
+
+
 	}
