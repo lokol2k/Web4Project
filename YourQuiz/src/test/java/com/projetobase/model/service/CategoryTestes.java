@@ -1,13 +1,8 @@
 package com.projetobase.model.service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.jdbc.Sql;
 
 import com.projetobase.model.entity.Category;
 import com.projetobase.model.repository.CategoryRepository;
@@ -25,6 +20,7 @@ public class CategoryTestes extends AbstractIntegrationTests {
 	public void cadastrarCategoryMustPass() {
 		
 		Category category = new Category();
+		category.setId(100L);
 		category.setName("Ingles");
 		
 		CategoryService.cadastrarCategory(category);

@@ -1,11 +1,15 @@
 package com.projetobase.model.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -25,8 +29,13 @@ public class QuestionSetupAnswer extends AbstractEntity implements Serializable 
 	@Size(max = 100)
 	private String Description;
 
-	@JsonIgnoreProperties("QuestionSetup")
-	@ManyToOne(targetEntity = Quiz.class,
+	@JsonIgnoreProperties("questionSetupAnswer")
+	@ManyToOne(targetEntity = QuestionSetup.class,
 			fetch = FetchType.LAZY)
-	private Quiz quiz;
+	private QuestionSetup questionSetup;
+	
+	@JsonIgnoreProperties("questionSetupAnswer")
+	@OneToMany(targetEntity = UserAnswer.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
+			fetch = FetchType.EAGER, mappedBy = "questionSetupAnswer", orphanRemoval = true)
+	private List<UserAnswer> userAnswer = new ArrayList<UserAnswer>();
 }

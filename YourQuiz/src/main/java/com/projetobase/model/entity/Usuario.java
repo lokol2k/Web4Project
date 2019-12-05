@@ -10,8 +10,11 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Transient;
+
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -26,8 +29,13 @@ import lombok.EqualsAndHashCode;
 @Entity
 public class Usuario extends AbstractEntity implements UserDetails {
 
-
 	
+	/**Usuario
+	@JsonIgnoreProperties("usuario")
+	@OneToMany(targetEntity = UserAnswer.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
+			fetch = FetchType.EAGER, mappedBy = "usuario", orphanRemoval = true)
+	private List<UserAnswer> userAnswer = new ArrayList<UserAnswer>();
+**/
 
 	/**
 	 * 
@@ -158,5 +166,9 @@ public class Usuario extends AbstractEntity implements UserDetails {
 		this.senha = UUID.randomUUID().toString();
 
 	}
+	
+
+	
+
 	
 }

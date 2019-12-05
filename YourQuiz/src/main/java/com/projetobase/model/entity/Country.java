@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Category extends AbstractEntity implements Serializable {
+public class Country extends AbstractEntity implements Serializable {
 	private static final long serialVersionUID = 665426621504404261L;
 
 	@NotBlank
@@ -32,9 +32,9 @@ public class Category extends AbstractEntity implements Serializable {
 	private String name;
 	
 	
-
-	@OneToMany(targetEntity = Quiz.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
-			fetch = FetchType.EAGER, mappedBy = "category", orphanRemoval = true)
-	private List<Quiz> quiz = new ArrayList<Quiz>();
+	@JsonIgnoreProperties("country")
+	@OneToMany(targetEntity = Usuario.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
+			fetch = FetchType.EAGER, mappedBy = "country", orphanRemoval = true)
+	private List<Usuario> usuario = new ArrayList<Usuario>();
 }
 

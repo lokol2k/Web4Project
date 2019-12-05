@@ -9,7 +9,8 @@ import com.projetobase.model.entity.Category;
 
 public interface CategoryRepository extends JpaRepository<Category, Long>{
 	
-	Optional<Category> findById(Long Id);
+	Optional<Category> findById(Long id);
 	
-	Category findByName(String Name);
+	Category findByName(String name);
+
 }

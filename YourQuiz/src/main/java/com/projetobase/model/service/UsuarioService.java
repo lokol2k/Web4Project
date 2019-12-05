@@ -1,6 +1,7 @@
 package com.projetobase.model.service;
 
 import java.time.OffsetDateTime;
+import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -219,5 +220,8 @@ public class UsuarioService
 		}
 		return this.usuarioRepository.save( usuario );
 	}
+
+	
+	
 
 }

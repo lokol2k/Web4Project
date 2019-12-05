@@ -2,21 +2,31 @@ package com.projetobase.model.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-public class UserAnswer implements Serializable {
-	private static final long serialVersionUID = 1L;
-
-	@JsonIgnoreProperties("QuestionSetupAnswer")
-	@OneToMany(targetEntity = QuestionSetup.class,
-			fetch = FetchType.LAZY)
-	private QuestionSetup questionSetup;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+@Data
+@EqualsAndHashCode(callSuper = true)
+@Entity
+public class UserAnswer extends AbstractEntity implements Serializable {
+	private static final long serialVersionUID = 665426621504404261L;
 	
-	@JsonIgnoreProperties("quiz")
-	@OneToMany(targetEntity = Usuario.class,
+	
+	@JsonIgnoreProperties("userAnswer")
+	@ManyToOne(targetEntity = QuestionSetupAnswer.class,
 			fetch = FetchType.LAZY)
-	private Usuario usuario;
+	private QuestionSetupAnswer questionSetupAnswer;
+
+	
+	@JsonIgnoreProperties("userAnswer")
+	@ManyToOne(targetEntity = Usuario.class,
+			fetch = FetchType.LAZY)
+	private Usuario usuario;	
+
+
 }
