@@ -27,7 +27,7 @@ public class Quiz extends AbstractEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@NotBlank
-	@Column(nullable = false, length = 200)
+	@Column(nullable = false, length = 150)
 	@Size(max = 100)
 	private String quizHeader;
 	

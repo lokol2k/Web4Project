@@ -37,6 +37,8 @@ public class Usuario extends AbstractEntity implements UserDetails {
 	private List<UserAnswer> userAnswer = new ArrayList<UserAnswer>();
 **/
 
+	
+
 	/**
 	 * 
 	 */
@@ -49,6 +51,7 @@ public class Usuario extends AbstractEntity implements UserDetails {
 	@Column(nullable = false, length = 100)
 	@Size(max = 100)
 	private String nome;
+	
 	
 	/**
 	 * 

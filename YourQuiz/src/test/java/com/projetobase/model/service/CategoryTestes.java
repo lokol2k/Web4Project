@@ -17,9 +17,8 @@ public class CategoryTestes extends AbstractIntegrationTests {
 	
 	@Autowired
 	private CategoryRepository categoryRepository;
-	/**
-	 * ====================================== CADASTRAR ===========================================
-	 */
+	
+	 // ====================================== CADASTRAR ===========================================
 	@Test
 	public void cadastrarCategoryMustPass() {
 		
@@ -31,18 +30,15 @@ public class CategoryTestes extends AbstractIntegrationTests {
 		
 		Assert.assertNotNull(category.getId());
 		}
-	
+	/**
 	// ====================================== LISTAR =========================================
 		@Test
-		@Sql({ "/dataset/truncate.sql",  
-			"/dataset/category.sql", 
-			"/dataset/category.sql",
-			"/dataset/usuarios.sql"})
+		
 		public void listarCategoryMustPass() {
 			List<Category> category = this.categoryService.listarCategory();
 			Assert.assertEquals(category.size(), 4);
 
-		}
+		}/**
 	// ====================================== EDITAR =========================================
 		public void editarCategoryMustPass() {
 			Category category = new Category();
@@ -52,7 +48,7 @@ public class CategoryTestes extends AbstractIntegrationTests {
 			categoryService.cadastrarCategory(category);
 				Assert.assertNotNull(category.getId());
 		}
-	
+
 	public void atualizarCategoryMustPass() {
 		Category category = this.categoryRepository.findById(1001L).orElse(null);
 		
@@ -62,7 +58,7 @@ public class CategoryTestes extends AbstractIntegrationTests {
 		Assert.assertTrue(category.getName() != "");
 
 	}
-		
+	**/	
 }
 
 

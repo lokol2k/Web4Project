@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import com.projetobase.model.entity.QuestionSetup;
 import com.projetobase.model.entity.Quiz;
 import com.projetobase.model.repository.QuizRepository;
 
@@ -49,6 +50,10 @@ public class QuizService {
 		return this.quizRepository.findAll();
 	}
 	
+	public List<QuestionSetup> quizQuestionSetup(Long id){
+		return this.quizRepository.findQuestionsByQuizId(id);
+	}
+	
 	/**
 	 * Serviço para detalhar um Quiz
 	 *
@@ -78,8 +83,8 @@ public class QuizService {
 	 * @param quiz
 	 * @return
 	 */
-	public Page<Quiz> listarQuizByCategory(long id, PageRequest pageable){
-		return this.quizRepository.findByCategory(id, pageable);
+	public Page<Quiz> listarQuizByCategory(long categoryId, PageRequest pageable){
+		return this.quizRepository.findByCategoryId(categoryId, pageable);
 	}
 	/**
 	 * Serviço para listar um Quiz por seu nome

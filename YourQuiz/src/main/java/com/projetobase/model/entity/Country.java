@@ -31,10 +31,10 @@ public class Country extends AbstractEntity implements Serializable {
 	@Size(max = 100)
 	private String name;
 	
-	
+	/**
 	@JsonIgnoreProperties("country")
 	@OneToMany(targetEntity = Usuario.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
 			fetch = FetchType.EAGER, mappedBy = "country", orphanRemoval = true)
-	private List<Usuario> usuario = new ArrayList<Usuario>();
+	private List<Usuario> usuario = new ArrayList<Usuario>();**/
 }
 
